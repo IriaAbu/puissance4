@@ -1,0 +1,25 @@
+@mixin triangle($color: #fff, $size: 10px) {
+  &::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: $size solid $color;
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    position: absolute;
+    bottom: $size * -1;
+    left: calc(50% - #{$size});
+  }
+}
+
+@mixin responsive-columns($suffix: "") {
+  @for $i from 1 through $columns {
+    .col#{$suffix}-#{$i} {
+      width: $i / $columns * 100%;
+    }
+  }
+  .col#{$suffix}-center {
+    margin: 0 auto;
+    float: none;
+  }
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="js/jQuery.js"></script>
+    <link rel="stylesheet" href="../style.css">
+    <script src="js/p4.js"></script>
+    <script src="js/main.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
+    <title>P4</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="modal" id="lastModal" hidden>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 id="felicitations">Felicitations !</h4>
+                    <button class="close popin-dimiss">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <h4>Une autre partie ?</h4>
+                    <button class="btn btn-lg btn-outline-success" id="restart">Relancer</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="myModal" hidden>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Qui joue ?</h4>
+                    <button class="close popin-dimiss">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="formulaire">
+                        <div class="row">
+                            <div class="firstGamer col col-xs-4">
+                                <div class="name">
+                                    <label for="name1">Nom ou Surnom</label>
+                                    <input type="text" placeholder="Gamer1" id="name1">
+                                </div>
+                                <br>
+                                <div class="color">
+                                    <label for="color1">Choisi ta couleur</label>
+                                    <input type="color" name="color1" id="color1" value="#ff0000">
+                                </div>
+                            </div>
+                            <div class="secondGamer  col col-xs-4">
+                                <div class="name">
+                                    <label for="name2">Nom ou Surnom</label>
+                                    <input type="text" placeholder="Gamer1" id="name2">
+                                </div>
+                                <br>
+                                <div class="color">
+                                    <label for="color2">Choisi ta couleur</label>
+                                    <input type="color" name="color2" id="color2" value="#ffd900">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row question">
+                            <h4>Combient de colonne et ligne vous voulez ?</h4>
+                        </div>
+                        <div class="gridSize row">
+                            <div class="gridRow">
+                                <label for="nbrRows">Rows</label>
+                                <select name="x" id="nbrRows">
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+                            <div class="gridCol">
+                                <label for="nbrCols">Columns</label>
+                                <select name="y" id="nbrCols">
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary btn-lg popin-dimiss" id="close">Close</button>
+                    <button class="btn btn-primary btn-lg popin-dimiss" id="ok">Ok</button>
+                </div>
+            </div>
+        </div>
+        <h1>On se fait un Puissance 4 ?</h1>
+        <div class="row">
+            <div id="startGame" data-target="#myModal" class="col btn btn-outline-success btn-lg">Commencer le jeu</div>
+        </div>
+        <div class="row gamers">
+            <div class="col-xs-12 col-lg-6 gamer1">
+                <div class="row">
+                    <div class="col col-xs-12 col-sm-6">
+                        <h3 id="tourOne" hidden>Joueur 1</h3>
+                        <h2 id="gamerOne">Joueur 1</h2>
+                        <canvas id="colorOne"></canvas>
+                    </div>
+                    <div class="scores col col-xs-12 col-sm-6">
+                        <h2>Nombre de victoires :</h2>
+                        <h2 id="score1"></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-6 gamer2">
+                <div class="row">
+                    <div class="col col-xs-12 col-sm-6">
+                        <h3 id="tourTwo" hidden>Joueur 2</h3>
+                        <h2 id="gamerTwo">Joueur 2</h2>
+                        <canvas id="colorTwo"></canvas>
+                    </div>
+                    <div class="scores col col-xs-12 col-sm-6">
+                        <h2>Nombre de victoires :</h2>
+                        <h2 id="score2"></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="game"></div>
+        <boutton id="lastMouv" class="btn btn-outline-warning btn-sm"><b>&laquo;</b></boutton>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#startGame').click(function () {
+                $('#myModal').css("display", "block");
+            });
+            $('.popin-dimiss').click(function () {
+                $('#myModal').css("display", "none");
+            });
+            $('.close').click(function () {
+                var url = "file:///home/wac/Projets/puissance4/sass/p4.html";
+                $(location).attr('href', url);
+
+                // $('#lastModal').css("display", "none");
+            })
+
+            $('#ok').click(function () {
+                // hidden et visibles : 
+                $('#startGame').css("display", "none");
+                $('h3').css("display", "block");
+
+                // variables :
+                var nameGamer1 = $('#name1').val();
+                var nameGamer2 = $('#name2').val();
+                var color1 = $('#color1').val();
+                var color2 = $('#color2').val();
+                var nbrRows = $('#nbrRows').val();
+                var nbrCols = $('#nbrCols').val();
+
+                // plugin :
+                $('#game').puissance4(nbrRows, nbrCols, color1, color2, nameGamer1, nameGamer2);
+
+            });
+        });
+    </script>
+</body>
+
+</html>

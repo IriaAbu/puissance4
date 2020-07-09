@@ -1,0 +1,418 @@
+// Attributs :
+// backgrounds :
+$primary: #007bff !default;
+$secondary: #6c757d !default;
+$success: #28a745 !default;
+$danger: #dc3545 !default;
+$warning: #ffc107 !default;
+$info: #17a2b8 !default;
+$light: #f8f9fa !default;
+$dark: #343a40 !default;
+$link: none !default;
+
+// backgrounds hover :
+$primaryHover: #0069d9 !default;
+$secondaryHover: #5a6268 !default;
+$successHover: #218838 !default;
+$dangerHover: #c82333 !default;
+$warningHover: #e0a800 !default;
+$infoHover: #138496 !default;
+$lightHover: #e2e6ea !default;
+$darkHover: #23272b !default;
+$linkHover: none !default;
+
+// borders :
+$primaryBorder: $primary !default;
+$secondaryBorder: $secondary !default;
+$successBorder: $success !default;
+$dangerBorder: $danger !default;
+$warningBorder: $warning !default;
+$infoBorder: $info !default;
+$lightBorder: $light !default;
+$darkBorder: $dark !default;
+$linkBorder: $link !default;
+
+//borders hover :
+$primaryBorderHover: #0062cc !default;
+$secondaryBorderHover: #545b62 !default;
+$successBorderHover: #1e7e34 !default;
+$dangerBorderHover: #bd2130 !default;
+$warningBorderHover: #d39e00 !default;
+$infoBorderHover: #117a8b !default;
+$lightBorderHover: #dae0e5 !default;
+$darkBorderHover: #1d2124 !default;
+$linkBorderHover: none !default;
+
+// colors :
+$colorBlack: #212529 !default;
+$colorWhite: #fff !default;
+$colorLink: #007bff !default;
+
+// darken :
+$primaryDarken: #0062cc !default;
+$secondaryDarken: #4b5258 !default;
+$successDarken: #17702c !default;
+$dangerDarken: #9b2531 !default;
+$warningDarken: #cc9a04 !default;
+$infoDarken: #0f7786 !default;
+$lightDarken: #cdcecf !default;
+$darkDarken: #202327 !default;
+$linkDarken: rgb(238, 237, 237) !default;
+
+// lighten :
+$primaryLighten: #007bffe5 !default;
+$secondaryLighten: #6c757de5 !default;
+$successLighten: #28a745e5 !default;
+$dangerLighten: #dc3545e5 !default;
+$warningLighten: #ffc107e5 !default;
+$infoLighten: #17a2b8e5 !default;
+$lightLighten: #f8f9fae5 !default;
+$darkLighten: #343a40e5 !default;
+$linkLighten: #fff !default;
+
+// tailles:
+$paddingSmall: 0.25rem 0.5rem !default;
+$font-sizeSmall: 0.875rem !default;
+$border-radiusSmall: 0.2rem !default;
+
+$line-height: 1.5 !default;
+
+$paddingLarge: 0.5rem 1rem !default;
+$font-sizeLarge: 1.25rem !default;
+$border-radiusLarge: 0.3rem !default;
+
+// extends :
+%btn {
+  padding: $paddingLarge;
+  font-size: $font-sizeLarge;
+  border-radius: $border-radiusLarge;
+  line-height: $line-height;
+  display: inline-block;
+  cursor: pointer;
+}
+
+// class - couleurs :
+.btn {
+  @extend %btn;
+  background: $primary;
+  border: $primaryBorder;
+  color: $colorWhite;
+  margin: 0 5px;
+
+  &:hover {
+    background: $primaryHover;
+    border: $primaryBorderHover;
+  }
+}
+
+.btn-primary {
+  @extend .btn;
+  background: $primary;
+  border: $primaryBorder;
+  color: $colorWhite;
+
+  &:hover {
+    background: $primaryHover;
+    border: $primaryBorderHover;
+  }
+
+  :disabled,
+  &.disabled {
+    opacity: 0.5;
+    text-decoration: none;
+    background: $primaryLighten;
+    cursor: not-allowed;
+  }
+
+  &.active {
+    background: $primaryDarken;
+  }
+}
+
+.btn-secondary {
+  @extend .btn;
+  background: $secondary;
+  border: $secondaryBorder;
+  color: $colorWhite;
+
+  &:hover {
+    background: $secondaryHover;
+    border: $secondaryBorderHover;
+  }
+
+  :disabled,
+  &.disabled {
+    opacity: 0.5;
+    text-decoration: none;
+    background: $secondaryLighten;
+    cursor: not-allowed;
+  }
+
+  &.active {
+    background: $secondaryDarken;
+  }
+}
+
+.btn-success {
+  @extend .btn;
+  background: $success;
+  border: $successBorder;
+  color: $colorWhite;
+
+  &:hover {
+    background: $successHover;
+    border: $successBorderHover;
+  }
+
+  :disabled,
+  &.disabled {
+    opacity: 0.5;
+    text-decoration: none;
+    background: $successLighten;
+    cursor: not-allowed;
+  }
+
+  &.active {
+    background: $successDarken;
+  }
+}
+
+.btn-danger {
+  @extend .btn;
+  background: $danger;
+  border: $dangerBorder;
+  color: $colorWhite;
+
+  &:hover {
+    background: $dangerHover;
+    border: $dangerBorderHover;
+  }
+
+  :disabled,
+  &.disabled {
+    opacity: 0.5;
+    text-decoration: none;
+    background: $dangerLighten;
+    cursor: not-allowed;
+  }
+
+  &.active {
+    background: $dangerDarken;
+  }
+}
+
+.btn-warning {
+  @extend .btn;
+  background: $warning;
+  border: $warningBorder;
+  color: $colorBlack;
+
+  &:hover {
+    background: $warningHover;
+    border: $warningBorderHover;
+  }
+
+  :disabled,
+  &.disabled {
+    opacity: 0.5;
+    text-decoration: none;
+    background: $warningLighten;
+    cursor: not-allowed;
+  }
+
+  &.active {
+    background: $warningDarken;
+  }
+}
+
+.btn-info {
+  @extend .btn;
+  background: $info;
+  border: $infoBorder;
+  color: $colorWhite;
+
+  &:hover {
+    background: $infoHover;
+    border: $infoBorderHover;
+  }
+
+  :disabled,
+  &.disabled {
+    opacity: 0.5;
+    text-decoration: none;
+    background: $infoLighten;
+    cursor: not-allowed;
+  }
+
+  &.active {
+    background: $infoDarken;
+  }
+}
+
+.btn-light {
+  @extend .btn;
+  background: $light;
+  border: $lightBorder;
+  color: $colorBlack;
+
+  &:hover {
+    background: $lightHover;
+    border: $lightBorderHover;
+  }
+
+  :disabled,
+  &.disabled {
+    opacity: 0.5;
+    text-decoration: none;
+    background: $lightLighten;
+    cursor: not-allowed;
+  }
+
+  &.active {
+    background: $lightDarken;
+  }
+}
+
+.btn-dark {
+  @extend .btn;
+  background: $dark;
+  border: $darkBorder;
+  color: $colorWhite;
+
+  &:hover {
+    background: $darkHover;
+    border: $darkBorderHover;
+  }
+
+  :disabled,
+  &.disabled {
+    opacity: 0.5;
+    text-decoration: none;
+    background: $darkLighten;
+    cursor: not-allowed;
+  }
+
+  &.active {
+    background: $darkDarken;
+  }
+}
+
+.btn-link {
+  @extend .btn;
+  background: $link;
+  border: $linkBorder;
+  color: $colorLink;
+
+  &:hover {
+    background: $linkHover;
+    border: $linkBorderHover;
+    text-decoration: underline;
+  }
+
+  :disabled,
+  &.disabled {
+    opacity: 0.5;
+    text-decoration: none;
+    background: $linkLighten;
+    cursor: not-allowed;
+  }
+
+  &.active {
+    background: $linkDarken;
+  }
+}
+
+// class outlines :
+.btn-outline-primary {
+  background: none;
+  color: $primary !important;
+  border: 1px solid $primaryBorder;
+
+  &:hover {
+    background: $primary;
+    color: $colorWhite !important;
+  }
+}
+.btn-outline-secondary {
+  background: none;
+  color: $secondary !important;
+  border: 1px solid $secondaryBorder;
+
+  &:hover {
+    background: $secondary;
+    color: $colorWhite !important;
+  }
+}
+.btn-outline-success {
+  background: none;
+  color: $success !important;
+  border: 1px solid $successBorder;
+
+  &:hover {
+    background: $success;
+    color: $colorWhite !important;
+  }
+}
+.btn-outline-danger {
+  background: none;
+  color: $danger !important;
+  border: 1px solid $dangerBorder;
+
+  &:hover {
+    background: $danger;
+    color: $colorWhite !important;
+  }
+}
+.btn-outline-warning {
+  background: none;
+  color: $warning !important;
+  border: 1px solid $warningBorder;
+
+  &:hover {
+    background: $warning;
+    color: $colorBlack !important;
+  }
+}
+.btn-outline-info {
+  background: none;
+  color: $info !important;
+  border: 1px solid $infoBorder;
+
+  &:hover {
+    background: $info;
+    color: $colorWhite !important;
+  }
+}
+.btn-outline-light {
+  background: none;
+  color: $light !important;
+  border: 1px solid $lightBorder;
+
+  &:hover {
+    background: $light;
+    color: $colorBlack !important;
+  }
+}
+.btn-outline-dark {
+  background: none;
+  color: $dark !important;
+  border: 1px solid $darkBorder;
+  
+  &:hover {
+    background: $dark;
+    color: $colorWhite !important;
+  }
+}
+
+// class - tailles :
+.btn-lg {
+  padding: $paddingLarge;
+  font-size: $font-sizeLarge;
+  border-radius: $border-radiusLarge;
+}
+
+.btn-sm {
+  padding: $paddingSmall;
+  font-size: $font-sizeSmall;
+  border-radius: $border-radiusSmall;
+}

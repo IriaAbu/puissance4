@@ -1,0 +1,120 @@
+@import "responsive.scss";
+@import "buttons.scss";
+
+.nav {
+  position: relative;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(211, 209, 209);
+  &-primary {
+    background: $primary;
+  }
+  &-secondary {
+    background: $secondary;
+  }
+  &-success {
+    background: $success;
+  }
+  &-danger {
+    background: $danger;
+  }
+  &-warning {
+    background: $warning;
+  }
+  &-info {
+    background: $info;
+  }
+  &-light {
+    background: $light;
+  }
+  &-dark {
+    background: $dark;
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.navbar {
+  text-decoration: none;
+  margin: 5px;
+  color: rgb(56, 55, 55);
+  &-brand {
+    display: inline-block;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+  }
+
+  &.active {
+    font-weight: bold;
+  }
+
+  &.disabled {
+    opacity: 50%;
+    cursor: not-allowed;
+  }
+}
+
+li {
+  display: inline;
+}
+
+%dropdown {
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+  line-height: 2em;
+  z-index: 80;
+  float: right;
+}
+
+.dropdown {
+  @extend %dropdown;
+  padding-top: 7px;
+
+  & li {
+    float: left;
+    list-style: none;
+    position: relative;
+  }
+
+  & ul {
+    @extend %dropdown;
+    position: absolute;
+    display: none;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+  }
+
+  &-item {
+    left: 0;
+    width: 100%;
+    padding: 0.25rem 1.5rem;
+    clear: both;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: #fff;
+    list-style: none;
+  }
+
+  &-divider {
+    width: 200px;
+    height: 0;
+    margin: 0;
+    border-top: 1px solid #e9ecef;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.9);
+}

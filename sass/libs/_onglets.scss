@@ -1,0 +1,88 @@
+@import "buttons.scss";
+%borders {
+  padding: 18px;
+  border-left: 1px solid rgba($light, 50%);
+  border-right: 1px solid rgba($light, 50%);
+  border-top: 1px solid rgba($secondary, 50%);
+  border-radius: 0.25em;
+}
+.tab-list {
+  background: $secondary;
+  padding: 1rem;
+  border-bottom: 1px solid $dark;
+  border-radius: 0.25em;
+
+  & li {
+    color: $light;
+  }
+
+  & li:hover {
+    font-weight: bold;
+    @extend %borders;
+  }
+
+  &.primary {
+    background: $primary;
+  }
+  &.secondary {
+    background: $secondary;
+  }
+  &.success {
+    background: $success;
+  }
+  &.danger {
+    background: $danger;
+  }
+  &.info {
+    background: $info;
+  }
+  &.dark {
+    background: $dark;
+  }
+}
+
+.tab-item {
+  &.active {
+    background: #fff;
+    color: $dark;
+    @extend %borders;
+  }
+
+  // &:active {
+  //   @extend .active;
+  // }
+}
+
+.tab-pane {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
+.tab-content {
+  background: $secondary;
+  color: $light;
+  padding: 2rem;
+  margin-bottom: 2rem;
+
+  &.primary {
+    background: $primary;
+  }
+  &.secondary {
+    background: $secondary;
+  }
+  &.success {
+    background: $success;
+  }
+  &.danger {
+    background: $danger;
+  }
+  &.info {
+    background: $info;
+  }
+  &.dark {
+    background: $dark;
+  }
+}

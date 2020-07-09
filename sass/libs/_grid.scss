@@ -1,0 +1,118 @@
+// atributs :
+$columns: 12 !default;
+$gutter: 20px !default;
+
+//Imports :
+@import "responsive";
+@import "mixins";
+
+// Extends :
+%col {
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding: $gutter * 0.05;
+}
+
+%clearfix {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+  & {
+    zoom: 1;
+  }
+}
+
+// Class :
+.row {
+  margin: 10px 0;
+  @extend %clearfix;
+}
+
+.container {
+  margin: $gutter * 0.5;
+}
+.container-fluid {
+  width: 100%;
+}
+
+// Grid :
+@for $i from 1 through $columns {
+  .col-xs-#{$i},
+  .col-sm-#{$i},
+  .col-md-#{$i},
+  .col-lg-#{$i},
+  .col-xl-#{$i} {
+    @extend %col;
+  }
+}
+
+.visible-print,
+.sm-visible,
+.md-visible,
+.lg-visible,
+.xl-visible {
+  display: none;
+}
+
+@include responsive-columns("-xs");
+
+@media #{$small-up} {
+  @include responsive-columns("-sm");
+  .sm-hidden {
+    display: none;
+  }
+  .sm-visible {
+    display: block;
+  }
+}
+
+@media #{$medium-up} {
+  @include responsive-columns("-md");
+  .md-hidden,
+  .sm-visible {
+    display: none;
+  }
+  .md-visible {
+    display: block;
+  }
+}
+
+@media #{$large-up} {
+  @include responsive-columns("-lg");
+  .lg-hidden,
+  .sm-visible,
+  .md-visible {
+    display: none;
+  }
+  .lg-visible {
+    display: block;
+  }
+}
+
+@media #{$extraLarge-up} {
+  @include responsive-columns("-xl");
+  .xl-hidden,
+  .sm-visible,
+  .md-visible,
+  .lg-visible {
+    display: none;
+  }
+  .xl-visible {
+    display: block;
+  }
+}
+
+@media print {
+  .hidden-print {
+    display: none;
+  }
+  .visible-print {
+    display: block;
+  }
+}
